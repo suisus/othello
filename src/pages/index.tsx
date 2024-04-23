@@ -46,6 +46,7 @@ const Home = () => {
         <div className={styles.cellStyle}>
           <div className={styles.stoneStyle} />
         </div>
+
         <div className={styles.cellStyle}>
           <div className={styles.stoneStyle} />
         </div>
