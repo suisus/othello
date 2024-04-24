@@ -20,6 +20,24 @@ const Home = () => {
     if (board[y + 1] !== undefined && board[y + 1][x] === 3 - turnColor) {
       setTurnColor(3 - turnColor);
       newBoard[y][x] = turnColor;
+    } else if (board[y + 2] !== undefined && board[y + 2][x] === 3 - turnColor) {
+      setTurnColor(3 - turnColor);
+      newBoard[y][x] = turnColor;
+    } else if (board[y + 3] !== undefined && board[y + 3][x] === 3 - turnColor) {
+      setTurnColor(3 - turnColor);
+      newBoard[y][x] = turnColor;
+    } else if (board[y + 4] !== undefined && board[y + 4][x] === 3 - turnColor) {
+      setTurnColor(3 - turnColor);
+      newBoard[y][x] = turnColor;
+    } else if (board[y + 5] !== undefined && board[y + 5][x] === 3 - turnColor) {
+      setTurnColor(3 - turnColor);
+      newBoard[y][x] = turnColor;
+    } else if (board[y + 6] !== undefined && board[y + 6][x] === 3 - turnColor) {
+      setTurnColor(3 - turnColor);
+      newBoard[y][x] = turnColor;
+    } else if (board[y + 7] !== undefined && board[y + 7][x] === 3 - turnColor) {
+      setTurnColor(3 - turnColor);
+      newBoard[y][x] = turnColor;
     }
 
     setBoard(newBoard);
