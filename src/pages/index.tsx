@@ -16,13 +16,13 @@ const Home = () => {
   const [turnColor, setTurnColor] = useState(1);
   const [board, setBoard] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 1, 2, 0, 0, 0],
-    [0, 0, 0, 2, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 1],
+    [0, 0, 0, 0, 0, 0, 2, 1],
+    [0, 0, 0, 0, 0, 1, 2, 1],
+    [0, 0, 0, 0, 2, 1, 2, 1],
+    [0, 0, 0, 1, 2, 1, 2, 1],
+    [0, 0, 2, 1, 2, 1, 2, 1],
+    [0, 0, 0, 0, 0, 0, 0, 2],
   ]);
 
   const clickHandler = (x: number, y: number) => {
@@ -36,23 +36,30 @@ const Home = () => {
       // let ny = y + dy;
       let findOpponent: boolean = false;
       let i = 0;
-      while (i < 8) {
-        i++;
-        console.log(y, x);
-        console.log(i);
-        const stone = board[y + dy * i][x + dx * i];
 
-        if (stone === 0) break;
-        if (stone === 3 - turnColor) {
-          findOpponent = true;
-          continue;
-        }
-        if (stone === turnColor) {
-          if (findOpponent) {
-            newBoard[y][x] = turnColor;
-            setTurnColor(3 - turnColor);
-          } else {
-            break;
+      if (y + dy * i !== undefined && x + dx * i !== undefined) {
+        while (i < 8 && y + dy * i <= board.length && x + dx * i <= board.length) {
+          i++;
+          console.log(y, x);
+          console.log(i);
+          const stone = board[y + dy * i][x + dx * i];
+
+          if (stone === 0) break;
+          if (stone === 3 - turnColor) {
+            findOpponent = true;
+            continue;
+          }
+          if (stone === turnColor) {
+            if (findOpponent) {
+              newBoard[y][x] = turnColor;
+              for (let a = 0; a <= i; a++) {
+                newBoard[y + dy * a][x + dx * a] = turnColor;
+              }
+              setTurnColor(3 - turnColor);
+              break;
+            } else {
+              break;
+            }
           }
         }
       }
