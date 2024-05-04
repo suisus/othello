@@ -16,13 +16,13 @@ const Home = () => {
   const [turnColor, setTurnColor] = useState(1);
   const [board, setBoard] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 1, 1],
-    [0, 0, 0, 0, 0, 0, 2, 1],
-    [0, 0, 0, 0, 0, 1, 2, 1],
-    [0, 0, 0, 0, 2, 1, 2, 1],
-    [0, 0, 0, 1, 2, 1, 2, 1],
-    [0, 0, 2, 1, 2, 1, 2, 1],
-    [0, 0, 0, 0, 0, 0, 0, 2],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 2, 0, 0, 0],
+    [0, 0, 0, 2, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
   ]);
 
   const clickHandler = (x: number, y: number) => {
@@ -38,8 +38,17 @@ const Home = () => {
       let i = 0;
 
       if (y + dy * i !== undefined && x + dx * i !== undefined) {
-        while (i < 8 && y + dy * i <= board.length && x + dx * i <= board.length) {
+        while (
+          i < 8 &&
+          y + dy * i >= 0 &&
+          y + dy * i < board.length &&
+          x + dx * i >= 0 &&
+          x + dx * i < board[0].length
+        ) {
           i++;
+          if (board[y + dy * i] === undefined || board[y + dy * i][x + dx * i] === undefined) {
+            break;
+          }
           console.log(y, x);
           console.log(i);
           const stone = board[y + dy * i][x + dx * i];
@@ -64,6 +73,8 @@ const Home = () => {
         }
       }
     }
+
+    //（whileの中） i < 8 && y + dy * i <= board.length && x + dx * i <= board.length
 
     // if (board[y + 1] !== undefined && board[y + 1][x] === 3 - turnColor) {
     //   for (let n = 1; y + n < board.length; n++) {
@@ -92,7 +103,7 @@ const Home = () => {
 
     setBoard(newBoard);
   };
-
+  console.table(board);
   return (
     <div className={styles.container}>
       <div className={styles.boardStyle}>
@@ -108,6 +119,10 @@ const Home = () => {
             </div>
           )),
         )}
+      </div>
+      <div className={styles.player}>
+        {turnColor === 1 ? '黒' : '白'}
+        のターンです
       </div>
     </div>
   );
