@@ -120,6 +120,10 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
+      {/* <div className={styles.player}>
+        {turnColor === 1 ? '黒' : '白'}
+        のターンです
+      </div> */}
       <div className={styles.point}>
         黒：{blackPoint}個
         <br />

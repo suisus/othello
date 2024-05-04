@@ -17,9 +17,11 @@
 }
 
 .point {
+  margin-right: -530px;
+  margin-bottom: 5px;
+  font-family: monospace;
   font-size: 30px;
   text-align: right;
-  text-align: left;
   white-space: pre-wrap;
 }
 
@@ -27,11 +29,13 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  width: 150px;
-  height: 30px;
+  width: 250px;
+  height: 50px;
+  margin-top: 5px;
+  font-family: monospace;
+  font-size: 30px;
   text-align: center;
   white-space: nowrap;
-  background-color: silver;
 }
 
 .cellStyle {
