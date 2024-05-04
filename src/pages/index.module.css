@@ -16,12 +16,19 @@
   background-color: darkgreen;
 }
 
+.point {
+  font-size: 30px;
+  text-align: right;
+  text-align: left;
+  white-space: pre-wrap;
+}
+
 .player {
   display: flex;
   align-items: flex-end;
   justify-content: center;
   width: 150px;
-  height: 50px;
+  height: 30px;
   text-align: center;
   white-space: nowrap;
   background-color: silver;

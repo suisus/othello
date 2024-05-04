@@ -25,8 +25,23 @@ const Home = () => {
     [0, 0, 0, 0, 0, 0, 0, 0],
   ]);
 
+  let blackPoint = 0;
+  let whitePoint = 0;
+  for (let y = 0; y <= 7; y++) {
+    for (let x = 0; x <= 7; x++) {
+      const color = board[y][x];
+
+      if (color === 1) {
+        blackPoint++;
+      } else if (color === 2) {
+        whitePoint++;
+      }
+    }
+  }
+
+  // let y = 0; y <= 7; y++
+
   const clickHandler = (x: number, y: number) => {
-    console.log(y, x);
     const newBoard = structuredClone(board);
 
     if (board[y][x] !== 0) return;
@@ -49,8 +64,7 @@ const Home = () => {
           if (board[y + dy * i] === undefined || board[y + dy * i][x + dx * i] === undefined) {
             break;
           }
-          console.log(y, x);
-          console.log(i);
+
           const stone = board[y + dy * i][x + dx * i];
 
           if (stone === 0) break;
@@ -103,9 +117,14 @@ const Home = () => {
 
     setBoard(newBoard);
   };
-  console.table(board);
+
   return (
     <div className={styles.container}>
+      <div className={styles.point}>
+        黒：{blackPoint}個
+        <br />
+        白：{whitePoint}個
+      </div>
       <div className={styles.boardStyle}>
         {board.map((row, y) =>
           row.map((color, x) => (
